@@ -276,3 +276,29 @@ tbody tr:hover { background: #faf9ff; }
   .user-menu .user-text { display: none; }
   .topbar-title p { display: none; }
 }
+
+
+/* Focused login revision: keep the existing palette and health-center background. */
+.login-page-revised { grid-template-columns: 1fr 1fr; }
+.login-brand-revised {
+  justify-content: flex-start;
+  align-items: center;
+  padding: clamp(24px, 5vw, 64px);
+}
+.login-branding-logos { gap: clamp(12px, 1.8vw, 22px); margin: 0; }
+.login-branding-logos img {
+  width: clamp(58px, 5.2vw, 72px);
+  height: clamp(58px, 5.2vw, 72px);
+  flex: 0 1 auto;
+}
+.login-branding-logos img.ahon { width: clamp(58px, 5.2vw, 72px); }
+.login-panel-revised { align-items: center; }
+.login-panel-revised .login-card { width: min(430px, 100%); }
+.login-notice { margin-top: 18px !important; line-height: 1.5; }
+@media (max-width: 780px) {
+  .login-page-revised { grid-template-columns: 1fr; }
+  .login-brand-revised { padding: 30px 20px; min-height: 130px; }
+  .login-branding-logos { justify-content: center; flex-wrap: wrap; }
+  .login-branding-logos img { width: 58px; height: 58px; }
+  .login-panel-revised { padding: 24px 20px 36px; }
+}
