@@ -593,36 +593,26 @@
   }
 
   function login() {
-    return `<div class="login-page">
-      <section class="login-brand">
-        <div class="login-branding-logos">
+    return `<div class="login-page login-page-revised">
+      <section class="login-brand login-brand-revised" aria-label="Barangay Longos Super Health Center">
+        <div class="login-branding-logos" aria-label="Organization logos">
           <img src="assets/city-of-malabon.png" alt="City of Malabon logo">
           <img src="assets/city-health-department.png" alt="City Health Department logo">
-          <img class="ahon" src="assets/malabon-ahon.png" alt="Malabon Ahon logo">
           <img src="assets/barangay-logo.png" alt="Barangay Longos logo">
         </div>
-        <h1>LONGOS<br>SUPER HEALTH CENTER</h1>
-        <p>Web Based Patient Queue, Information Display and Health Information Management System.</p>
-        <div class="login-features">
-          <div class="login-feature">✓ Patient queue management</div>
-          <div class="login-feature">✓ Health information management</div>
-          <div class="login-feature">✓ Health-center information display</div>
-          <div class="login-feature">✓ Role-based system interfaces</div>
+      </section>
+      <section class="login-panel login-panel-revised">
+        <div class="login-card">
+          <h2>Sign in</h2>
+          <p>Enter your account credentials to continue.</p>
+          <form id="login-form">
+            <div class="form-group"><label for="login-user">Username</label><input class="input" id="login-user" name="username" autocomplete="username" required></div>
+            <div class="form-group"><label for="login-password">Password</label><input class="input" id="login-password" name="password" type="password" autocomplete="current-password" required></div>
+            <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+          <p class="small muted login-notice">Authentication is not connected yet. This frontend does not verify accounts or grant access.</p>
         </div>
       </section>
-      <section class="login-panel"><div class="login-card">
-        <div class="brand-lockup" style="margin-bottom:24px"><img class="brand-logo-img" src="assets/city-health-department.png" alt="City Health Department logo"><div><strong>Longos Super Health Center</strong><span class="muted">Health Information Management System</span></div></div>
-        <h2>Sign in</h2><p>Use a sample role to preview the system interfaces.</p>
-        <form id="login-form">
-          <div class="form-group"><label>Role</label><select id="login-role" required>
-            <option value="staff">Staff / Front Desk</option><option value="doctor">Doctor</option><option value="admin">Administrator</option><option value="patient">Patient</option>
-          </select></div>
-          <div class="form-group"><label>Username</label><input class="input" id="login-user" value="staff01" required></div>
-          <div class="form-group"><label>Password</label><input class="input" type="password" value="prototype" required></div>
-          <button class="btn btn-primary btn-block" type="submit">Sign in to prototype</button>
-        </form>
-        <p class="small muted" style="margin-top:18px">Prototype only — authentication is simulated locally and does not connect to a server.</p>
-      </div></section>
     </div>`;
   }
 
@@ -677,14 +667,9 @@
     if (loginForm) {
       loginForm.addEventListener("submit", e => {
         e.preventDefault();
-        state.role = document.getElementById("login-role").value;
-        state.page = "dashboard";
-        render();
-      });
-      const roleSelect = document.getElementById("login-role");
-      roleSelect.addEventListener("change", () => {
-        const defaults = { staff: "staff01", doctor: "doctor01", admin: "admin01", patient: "patient01" };
-        document.getElementById("login-user").value = defaults[roleSelect.value];
+        // TODO: Send credentials to the backend API. The server must authenticate
+        // the account and return trusted role/permissions before the UI opens a dashboard.
+        showToast("Sign-in is not available yet: backend authentication is not connected.");
       });
     }
 
